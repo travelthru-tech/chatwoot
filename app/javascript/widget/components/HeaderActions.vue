@@ -80,7 +80,7 @@ export default {
 <!-- eslint-disable-next-line vue/no-root-v-if -->
 <template>
   <div v-if="showHeaderActions" class="actions flex items-center gap-3">
-    <button
+    <!-- <button
       v-if="
         canLeaveConversation &&
         canUserEndConversation &&
@@ -92,7 +92,7 @@ export default {
       @click="resolveConversation"
     >
       <FluentIcon icon="sign-out" size="22" class="text-n-slate-12" />
-    </button>
+    </button> -->
     <button
       v-if="showPopoutButton"
       class="button transparent compact new-window--button"
