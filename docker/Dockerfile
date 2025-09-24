@@ -76,6 +76,9 @@ RUN pnpm i
 
 COPY . /app
 
+RUN chmod +x /app/docker/entrypoints/*.sh \
+  && sed -i 's/\r$//' /app/docker/entrypoints/*.sh
+
 # creating a log directory so that image wont fail when RAILS_LOG_TO_STDOUT is false
 # https://github.com/chatwoot/chatwoot/issues/701
 RUN mkdir -p /app/log
@@ -144,6 +147,9 @@ RUN if [ "$RAILS_ENV" != "production" ]; then \
 COPY --from=pre-builder /gems/ /gems/
 COPY --from=pre-builder /app /app
 
+RUN chmod +x /app/docker/entrypoints/*.sh \
+  && sed -i 's/\r$//' /app/docker/entrypoints/*.sh
+  
 # Copy .git_sha file from pre-builder stage
 COPY --from=pre-builder /app/.git_sha /app/.git_sha
 
